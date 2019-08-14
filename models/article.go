@@ -7,4 +7,6 @@ type Article struct {
 	Title string
 	Slug  string `gorm:"unique_index"`
 	Desc  string `sql:"type:text;"`
+	// relasi one user to many article
+	UserID uint
 }

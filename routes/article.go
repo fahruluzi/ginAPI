@@ -7,6 +7,7 @@ import (
 	"github.com/gosimple/slug"
 )
 
+// unexport
 func GetHome(c *gin.Context) {
 	items := []models.Article{}
 	config.DB.Find(&items)

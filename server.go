@@ -14,9 +14,9 @@ func main() {
 	// Router
 	router := gin.Default()
 
-	v1 := router.Group("/api/v1/")
+	v1 := router.Group("/api/v1")
 	{
-		articles := v1.Group("/article/")
+		articles := v1.Group("/article")
 		{
 			articles.GET("/", routes.GetHome)
 			articles.GET("/:slug", routes.GetArticle)

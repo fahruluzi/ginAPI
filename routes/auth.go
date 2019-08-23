@@ -17,6 +17,13 @@ import (
 // String bebas yang tau hanya server
 var JWT_SECRET = "SUPER_SECRET"
 
+// hanya check login untuk JWT Auth
+func CheckToken(c *gin.Context) {
+	c.JSON(200, gin.H{
+		"message": "berhasil Login",
+	})
+}
+
 // Redirect to correct oAuth URL
 func RedirectHandler(c *gin.Context) {
 	// Retrieve provider from route
@@ -97,9 +104,10 @@ func getOrRegisterUser(provider string, user *structs.User) models.User {
 		newUser := models.User{
 			Fullname: user.FullName,
 			Email:    user.Email,
-			SocialId: user.ID,
+			SocialID: user.ID,
 			Provider: provider,
 			Avatar:   user.Avatar,
+			Role:     "admin",
 		}
 		config.DB.Create(&newUser)
 		return newUser

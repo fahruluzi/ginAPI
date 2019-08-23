@@ -6,12 +6,13 @@ type User struct {
 	gorm.Model
 	// Relasi One user to many article
 	Articles []Article
-	Username string
-	Fullname string
-	Email    string
+	NIS      string //`gorm:"unique"`
+	Username string //`gorm:"size:100; unique"`
+	Fullname string `gorm:"size:100"`
+	Email    string `gorm:"size:100"`
 	Password string
-	SocialId string
-	Provider string
+	SocialID string
+	Provider string `gorm:"size:50"`
 	Avatar   string
-	Role     bool `gorm:"default:0"`
+	Role     string `gorm:"size:50"`
 }

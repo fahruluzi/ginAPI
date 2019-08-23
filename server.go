@@ -5,6 +5,7 @@ import (
 	"os"
 
 	"github.com/Fahrul-uzi/gin-full/config"
+	"github.com/Fahrul-uzi/gin-full/middleware"
 	"github.com/Fahrul-uzi/gin-full/routes"
 	"github.com/gin-gonic/gin"
 	"github.com/subosito/gotenv"
@@ -24,6 +25,7 @@ func main() {
 
 	v1 := router.Group("/api/v1")
 	{
+		v1.GET("/check", middleware.IsAuth(), routes.CheckToken)
 		v1.GET("/auth/:provider", routes.RedirectHandler)
 		v1.GET("/auth/:provider/callback", routes.CallbackHandler)
 		articles := v1.Group("/article")
